@@ -3,3 +3,6 @@
 
 ## Running code:
 `python3 main.py`
+
+## Credits:
+https://victorzhou.com/blog/intro-to-rnns/
