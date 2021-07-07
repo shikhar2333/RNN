@@ -8,18 +8,13 @@ for sentence in train_data.keys():
 
 print("Length of Vocabulary: ", len(vocab_dict.keys()))
 vocab_size = len(vocab_dict.keys())
+word_index = {word: i for i, word in enumerate(vocab_dict)}
 
-def one_hot_encoded_input(sentence):
+def one_hot_encoded_input(word):
   '''
-  Returns the one hot encoded reperesentation of the sentence
+  Returns the one hot encoded reperesentation of the word
   '''
-  
-  word_index = {word: i for i, word in enumerate(vocab_dict)}
-  one_hot_sentence = []
-  for i, word in enumerate(sentence.split()):
-    index = word_index[word]
-    zeros = np.zeros(vocab_size)
-    zeros[index] = 1
-    one_hot_sentence.append(zeros)
-
-  return np.asarray(one_hot_sentence)
+  one_hot_sentence = np.zeros((vocab_size, 1))
+  index = word_index[word]
+  one_hot_sentence[index] = 1
+  return one_hot_sentence
