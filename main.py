@@ -3,10 +3,13 @@ from rnn import BasicRNN, sigmoid
 from dataloader import vocab_size
 from data import train_data, test_data
 import matplotlib.pyplot as plt
+
 no_epochs = 1000
 
+
 def softmax(y):
-    return np.exp(y)/sum(np.exp(y))
+    return np.exp(y) / sum(np.exp(y))
+
 
 rnn_model = BasicRNN(vocab_size, 2)
 losses = []
@@ -22,8 +25,8 @@ for epoch in range(no_epochs):
         loss -= np.log(probabilities[0][label])
         probabilities[0][label] -= 1
         rnn_model.backward(probabilities.T)
-    
-    if epoch%10:
+
+    if epoch % 10:
         losses.append(loss)
         iters.append(epoch)
         sentence_test = test_data.items()
@@ -45,6 +48,6 @@ plt.xlabel("epoch number")
 plt.plot(iters, test_loss)
 plt.ylabel("Test Loss")
 plt.xlabel("epoch number")
-plt.legend(["Train Loss", "Test Loss"], loc ="upper right")
+plt.legend(["Train Loss", "Test Loss"], loc="upper right")
 plt.savefig("RNN_Losses.png")
 # plt.show()
