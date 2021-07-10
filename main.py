@@ -1,5 +1,5 @@
 import numpy as np
-from rnn import BasicRNN, sigmoid
+from rnn import BasicRNN
 from dataloader import vocab_size
 from data import train_data, test_data
 import matplotlib.pyplot as plt
